@@ -9,10 +9,10 @@ package jp.ac.uryukyu.ie.e245705;
  * Created by tnal on 2016/11/13.
  */
 public class Enemy {
-    public String name;
-    public int hitPoint;
-    public int attack;
-    public boolean dead;
+    private String name;
+    private int hitPoint;
+    private int attack;
+    private boolean dead;
 
     /**
      * コンストラクタ。名前、最大HP、攻撃力を指定する。
@@ -38,7 +38,7 @@ public class Enemy {
     public void attack(Hero hero) {
         if (hitPoint > 0) {
             int damage = (int) (Math.random() * attack);
-            System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, hero.name, damage);
+            System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, hero.getName(), damage);
             hero.wounded(damage);
         }
     }
@@ -55,6 +55,51 @@ public class Enemy {
             dead = true;
             System.out.printf("モンスター%sは倒れた。\n", name);
         }
+    }
+
+    /**
+     * 敵の名前を取得するためのゲッターです。
+     * 
+     * @return 敵の名前
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * 敵のHPを取得するためのゲッターです。
+     * 
+     * @return 敵の現在のHP
+     */
+    public int getHitPoint() {
+        return hitPoint;
+    }
+
+    /**
+     * 敵のHPを設定するためのセッターです。
+     * 
+     * @param hitPoint 設定するHP
+     */
+    public void setHitPoint(int hitPoint) {
+        this.hitPoint = hitPoint;
+    }
+
+    /**
+     * 敵の攻撃力を取得するためのゲッターです。
+     * 
+     * @return 敵の攻撃力
+     */
+    public int getAttack() {
+        return attack;
+    }
+
+    /**
+     * 敵の死亡状態を取得するためのゲッターです。
+     * 
+     * @return 敵が死亡している場合はtrue、それ以外はfalse
+     */
+    public boolean isDead() {
+        return dead;
     }
 
 }
